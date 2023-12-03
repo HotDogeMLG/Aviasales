@@ -1,0 +1,62 @@
+.Ticket {
+  width: 470px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 20px auto 0px auto;
+  filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.1));
+  padding: 20px;
+  transition: transform 0.2s;
+
+  @media (max-width: 800px) {
+    width: 300px;
+  }
+}
+
+.Ticket:hover {
+  transform: scale(1.01);
+}
+
+.Ticket__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Ticket__price {
+  font-size: 24px;
+  font-weight: 600;
+  color: hsla(207, 90%, 54%, 1);
+}
+
+.Ticket__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.Ticket__text span {
+  font-weight: 600;
+
+  @media (max-width: 800px) {
+    width: 87px;
+  }
+}
+
+.Ticket_light {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  color: hsla(202, 15%, 68%, 1);
+}
+
+.Ticket_dark {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.Ticket__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  row-gap: 20px;
+  column-gap: 120px;
+}

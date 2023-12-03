@@ -1,0 +1,23 @@
+.Main {
+  width: 775px;
+  margin-inline: auto;
+  display: flex;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.Main__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    justify-content: center;
+  }
+}

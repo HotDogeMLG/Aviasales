@@ -1,0 +1,29 @@
+.more {
+  width: 510px;
+  height: 50px;
+  background-color: hsla(207, 90%, 54%, 1);
+  margin: 20px auto 0 auto;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: transform 0.2s;
+
+  @media (max-width: 800px) {
+    width: 330px;
+  }
+}
+
+.more:hover {
+  transform: scale(1.01);
+}
+
+.more:active {
+  transform: scale(0.99);
+}
+
+.btn {
+  display: block;
+  border: none;
+  cursor: pointer;
+}

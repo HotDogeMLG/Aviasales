@@ -1,0 +1,33 @@
+.MyCheckbox {
+  width: 230px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 800px) {
+    margin: 0 auto 20px auto;
+    width: 300px;
+  }
+}
+
+.MyCheckbox__inside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.MyCheckbox span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.MyCheckbox .checkbox-title {
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
