@@ -5,4 +5,9 @@
 .Header img {
   margin-top: 25px;
   margin-bottom: 25px;
+  transition: scale 0.25s;
+}
+
+.Header img:hover {
+  scale: 1.05;
 }

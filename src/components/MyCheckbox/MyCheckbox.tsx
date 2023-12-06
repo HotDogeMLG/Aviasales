@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Checkbox } from 'antd';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import type { CheckboxValueType } from 'antd/es/checkbox/Group';
 import './MyCheckbox.scss'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
 const CheckboxGroup = Checkbox.Group;
 
 const plainOptions = ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'];
-const defaultCheckedList = ['Без пересадок'];
 
 const MyCheckbox: React.FC = () => {
-  const [checkedList, setCheckedList] = useState<CheckboxValueType[]>(defaultCheckedList);
+  const checkedList = useTypedSelector(state => state.check.checkboxValue)
 
   const checkAll = plainOptions.length === checkedList.length;
   const indeterminate = checkedList.length > 0 && checkedList.length < plainOptions.length;
 
-  const onChange = (list: CheckboxValueType[]) => {
-    setCheckedList(list);
+  const {checkChange} = useActions()
+
+  const onChange = (list: any[]) => {
+    checkChange(list)
   };
 
   const onCheckAllChange = (e: CheckboxChangeEvent) => {
-    setCheckedList(e.target.checked ? plainOptions : []);
+    checkChange(e.target.checked ? plainOptions : [])
   };
 
   return (

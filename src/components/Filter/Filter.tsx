@@ -1,20 +1,17 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Radio } from 'antd';
 import './Filter.scss';
-import * as sortActions from '../../store/actionCreators/sort';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
 
 const Filter: React.FC = () => {
   const sortValue = useTypedSelector((state) => state.sort);
 
-  const dispatch = useDispatch();
   const {
     sortCheapestAction,
     sortFastestAction,
     sortOptimalAction,
-  } = bindActionCreators(sortActions, dispatch);
+  } = useActions();
 
   return (
     <div className='Filter'>
