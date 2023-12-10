@@ -1,5 +1,4 @@
-import React, { FC } from 'react';
-import airlinesLogo from '../../img/airlines.png';
+import { FC } from 'react';
 import './Ticket.scss';
 import { addMinutes } from 'date-fns';
 

@@ -5,7 +5,6 @@ import {
   TicketActionTypes,
 } from '../../types/ticket';
 import axios from 'axios';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export const addTickets = (id: string | null) => {
   return async (dispatch: Dispatch<TicketAction>) => {
@@ -34,7 +33,7 @@ export const getSearchId = () => {
   return async (dispatch: Dispatch<TicketAction>) => {
     try {
       const res = await axios.get<{ searchId: string }>(
-        `https://aviasales-test-api.kata.academy/search`
+        'https://aviasales-test-api.kata.academy/search'
       );
 
       dispatch({

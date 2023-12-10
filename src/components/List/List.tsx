@@ -17,7 +17,7 @@ const List: FC = () => {
     else addTickets(id);
   }, [id]);
 
-  let tickets = useTypedSelector((state) => state.tickets.tickets);
+  const tickets = useTypedSelector((state) => state.tickets.tickets);
 
   const sort = useTypedSelector((state) => state.sort);
   const check = useTypedSelector((state) => state.check);

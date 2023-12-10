@@ -12,16 +12,16 @@ export const checkReducer = (
   state: CheckState = checkDefaultState,
   action: CheckAction
 ): CheckState => {
+  const newState: CheckState = {
+    noTransfers: false,
+    oneTransfer: false,
+    twoTransfers: false,
+    threeTransfers: false,
+    checkboxValue: action.payload,
+  };
   switch (action.type) {
     case CheckActionTypes.CHECK_CHANGE:
-      let newState: CheckState = {
-        noTransfers: false,
-        oneTransfer: false,
-        twoTransfers: false,
-        threeTransfers: false,
-        checkboxValue: action.payload,
-      };
-      for (let option of action.payload) {
+      for (const option of action.payload) {
         switch (option) {
           case 'Без пересадок':
             newState.noTransfers = true;

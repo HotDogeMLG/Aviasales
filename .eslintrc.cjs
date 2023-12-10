@@ -23,7 +23,7 @@ module.exports = {
   ],
   rules: {
     // Пользовательские правила можно добавить здесь
-    'indent': ['error', 2], // отступ в 2 пробела
+    'indent': ['error', 2, { 'SwitchCase': 1 }], // отступ в 2 пробела
     'linebreak-style': ['error', 'unix'], // стиль перевода строки - unix
     'quotes': ['error', 'single'], // использование одинарных кавычек
     'semi': ['error', 'always'], // требование точки с запятой в конце
