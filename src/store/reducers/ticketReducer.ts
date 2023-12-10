@@ -7,7 +7,7 @@ import {
 const ticketDefaultState: TicketState = {
   id: null,
   page: 1,
-  loading: false,
+  loading: true,
   error: null,
   tickets: [],
 };

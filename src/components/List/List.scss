@@ -22,6 +22,15 @@
   transform: scale(0.99);
 }
 
+.more:disabled {
+  filter: grayscale(0.5);
+}
+
+.more:disabled:hover {
+  transform: scale(1);
+  cursor: auto;
+}
+
 .btn {
   display: block;
   border: none;

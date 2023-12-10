@@ -3,7 +3,8 @@ import airlinesLogo from '../../img/airlines.png';
 import './Ticket.scss';
 import { addMinutes } from 'date-fns';
 
-interface TicketProps {
+export interface TicketProps {
+  display: boolean;
   price: number;
   carrier: string;
   ticket: {

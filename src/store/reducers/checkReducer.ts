@@ -2,9 +2,9 @@ import { CheckState, CheckAction, CheckActionTypes } from '../../types/check';
 
 const checkDefaultState: CheckState = {
   noTransfers: true,
-  oneTransfer: false,
-  twoTransfers: false,
-  threeTransfers: false,
+  oneTransfer: true,
+  twoTransfers: true,
+  threeTransfers: true,
   checkboxValue: ['Без пересадок', '1 пересадка', '2 пересадки', '3 пересадки'],
 };
 
