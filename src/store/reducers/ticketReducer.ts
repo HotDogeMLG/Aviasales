@@ -24,7 +24,14 @@ export const ticketReducer = (
     case TicketActionTypes.REQUEST_TICKETS:
       return { ...state, loading: true };
     case TicketActionTypes.TICKETS_ERROR:
-      return { ...state, loading: false, error: action.payload };
+      if (state.tickets.length === 0)
+        return { ...state, loading: false, error: action.payload };
+      else
+        return {
+          ...state,
+          loading: false,
+          tickets: [...state.tickets],
+        };
     case TicketActionTypes.ADD_TICKETS:
       return {
         ...state,

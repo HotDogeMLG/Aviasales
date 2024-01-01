@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 import Ticket from '../Ticket/Ticket';
 import './List.scss';
 import { useActions } from '../../hooks/useActions';
@@ -45,41 +45,26 @@ const List: FC = () => {
     }
   }
 
-  function filterFunc(ticket: TicketType) {
-    let display = false;
-    if (
-      check.noTransfers &&
-      ticket.segments[0].stops.length + ticket.segments[1].stops.length === 0
-    )
-      display = true;
-    if (
-      check.oneTransfer &&
-      ticket.segments[0].stops.length + ticket.segments[1].stops.length === 1
-    )
-      display = true;
-    if (
-      check.twoTransfers &&
-      ticket.segments[0].stops.length + ticket.segments[1].stops.length === 2
-    )
-      display = true;
-    if (
-      check.threeTransfers &&
-      ticket.segments[0].stops.length + ticket.segments[1].stops.length === 3
-    )
-      display = true;
-    return display;
+  function countStops(ticket: TicketType) {
+    return ticket.segments[0].stops.length + ticket.segments[1].stops.length;
+  }
+
+  function filterFunc(ticket: JSX.Element) {
+    if (check.noTransfers && ticket.props.stops === 0) return true;
+    if (check.oneTransfer && ticket.props.stops === 1) return true;
+    if (check.twoTransfers && ticket.props.stops === 2) return true;
+    if (check.threeTransfers && ticket.props.stops === 3) return true;
+    return false;
   }
 
   let ticketList: JSX.Element[] = [];
-  if (id)
-    ticketList = tickets
-      .slice(0, 30 * page)
-      .map((ticket, ind) => {
-        let display = true;
-        if (!filterFunc(ticket)) display = false;
+
+  ticketList = useMemo(() => {
+    if (id) {
+      return tickets.map((ticket, ind) => {
         return (
           <Ticket
-            display={display}
+            stops={countStops(ticket)}
             key={ind}
             price={ticket.price}
             carrier={ticket.carrier}
@@ -87,9 +72,27 @@ const List: FC = () => {
             backTicket={ticket.segments[1]}
           />
         );
-      })
-      .sort((prev, next) => sortFunc(prev, next))
-      .filter((ticket) => ticket.props.display);
+      });
+    }
+    return [];
+  }, [tickets]);
+
+  ticketList = useMemo(() => {
+    if (id) {
+      return ticketList.sort((prev, next) => sortFunc(prev, next));
+    }
+    return [];
+  }, [tickets, sort]);
+
+  if (id)
+    ticketList = ticketList
+      .slice(0, 30 * page)
+      .filter((ticket) => filterFunc(ticket));
+
+  function showMore() {
+    if ((page + 1) * 30 > tickets.length) addTickets(id);
+    changeTicketPage();
+  }
 
   const loading = useTypedSelector((state) => state.tickets.loading);
   const error = useTypedSelector((state) => state.tickets.error);
@@ -113,11 +116,7 @@ const List: FC = () => {
   return (
     <div className='List'>
       {displayElement}
-      <button
-        disabled={disabled}
-        onClick={changeTicketPage}
-        className='btn more'
-      >
+      <button disabled={disabled} onClick={showMore} className='btn more'>
         ПОКАЗАТЬ ЕЩЕ
       </button>
     </div>

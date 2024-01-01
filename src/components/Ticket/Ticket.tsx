@@ -3,7 +3,7 @@ import './Ticket.scss';
 import { addMinutes } from 'date-fns';
 
 export interface TicketProps {
-  display: boolean;
+  stops: number;
   price: number;
   carrier: string;
   ticket: {
