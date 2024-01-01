@@ -86,11 +86,10 @@ const List: FC = () => {
 
   if (id)
     ticketList = ticketList
-      .slice(0, 30 * page)
-      .filter((ticket) => filterFunc(ticket));
+      .filter((ticket) => filterFunc(ticket))
+      .slice(0, 30 * page);
 
   function showMore() {
-    if ((page + 1) * 30 > tickets.length) addTickets(id);
     changeTicketPage();
   }
 
