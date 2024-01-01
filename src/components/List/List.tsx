@@ -87,7 +87,7 @@ const List: FC = () => {
   if (id)
     ticketList = ticketList
       .filter((ticket) => filterFunc(ticket))
-      .slice(0, 30 * page);
+      .slice(0, 5 * page);
 
   function showMore() {
     changeTicketPage();
